@@ -1,0 +1,9 @@
+{
+  "base": 100,
+  "perKm": {
+    "sedan": 12,
+    "suv": 15,
+    "premium": 20
+  },
+  "driverAllowance": 250
+}
