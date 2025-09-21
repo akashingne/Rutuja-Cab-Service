@@ -1,89 +1,4 @@
 
-const destinations = [
-  {
-    name: "Mumbai (Gateway of India)",
-    region: "Konkan",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Mumbai_03-2016_30_Gateway_of_India.webp",
-    approxFare: 1800,
-    from: "Pune",
-    to: "Mumbai"
-  },
-  {
-    name: "Pune (Shaniwar Wada)",
-    region: "Western Ghats",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Shaniwar_wada_(pune).webp",
-    approxFare: 1600,
-    from: "Mumbai",
-    to: "Pune"
-  },
-  {
-    name: "Ajanta Caves (Aurangabad)",
-    region: "Marathwada",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Cave_26,_Ajanta.webp",
-    approxFare: 4800,
-    from: "Aurangabad",
-    to: "Ajanta Caves"
-  },
-  {
-    name: "Mahabaleshwar",
-    region: "Western Ghats",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Panoramic_view_from_Elphinstone_Point.webp",
-    approxFare: 2800,
-    from: "Pune",
-    to: "Mahabaleshwar"
-  },
-  {
-    name: "Lonavala (Bhushi Dam)",
-    region: "Western Ghats",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Bhushi_dam.webp",
-    approxFare: 2200,
-    from: "Mumbai",
-    to: "Lonavala"
-  },
-  {
-    name: "Shirdi",
-    region: "Khandesh",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Shirdi_Sai_Baba_Samadhi.webp",
-    approxFare: 3800,
-    from: "Pune",
-    to: "Shirdi"
-  },
-  {
-    name: "Alibaug",
-    region: "Konkan",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Alibag1.webp",
-    approxFare: 1900,
-    from: "Mumbai",
-    to: "Alibaug"
-  },
-  {
-    name: "Nashik (Sula Vineyards)",
-    region: "Khandesh",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Sula%E2%80%99s_estate_vineyards_in_Nashik.webp",
-    approxFare: 3200,
-    from: "Mumbai",
-    to: "Nashik"
-  },
-  {
-    name: "Aurangabad (Bibi Ka Maqbara)",
-    region: "Marathwada",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Aurangabad_Bibi_ka_Maqbara.webp",
-    approxFare: 4200,
-    from: "Pune",
-    to: "Aurangabad"
-  },
-  {
-    name: "Tadoba Andhari Tiger Reserve",
-    region: "Vidarbha",
-    image: "https://cdn.jsdelivr.net/gh/akashingne/images/Panthera_tigris_tigris_Tidoba_20150306.webp",
-    approxFare: 7800,
-    from: "Nagpur",
-    to: "Tadoba"
-  }
-];
-
-const cities = [...new Set(destinations.flatMap(d => [d.from, d.to]))];
-
 function toggleMenu(){
   document.querySelector('.nav').classList.toggle('show');
 }
@@ -92,51 +7,56 @@ function estimateFare(){
   const km = parseFloat(document.getElementById('est-distance').value || '0');
   const cab = document.getElementById('est-cabtype').value;
   const result = document.getElementById('est-result');
-  const pricing = {
-    base: 100,
-    perKm: { sedan: 12, suv: 15, premium: 20 },
-    driverAllowance: 250 // flat per day
-  };
-  const fare = Math.round(pricing.base + km * pricing.perKm[cab] + pricing.driverAllowance);
-  result.textContent = `Estimated fare: ₹${fare.toLocaleString('en-IN')} (includes driver allowance)`;
+  fetch("https://raw.githubusercontent.com/akashingne/Rutuja-Cab-Service/refs/heads/main/data/pricing.json")
+      .then(response => response.json())
+      .then(pricing => {
+        const fare = Math.round(pricing.base + km * pricing.perKm[cab] + pricing.driverAllowance);
+        result.textContent = `Estimated fare: ₹${fare.toLocaleString('en-IN')} (includes driver allowance)`;
+      })
+      .catch(error => console.error("Error fetching JSON:", error));
 }
 
 function renderRoutes(){
-  const routes = [
-    { from:"Pune", to:"Mumbai", km: 150, img: "https://cdn.jsdelivr.net/gh/akashingne/images/Bhushi_dam.webp" },
-    { from:"Pune", to:"Mahabaleshwar", km: 150, img: "https://cdn.jsdelivr.net/gh/akashingne/images/Panoramic_view_from_Elphinstone_Point.webp" },
-    { from:"Pune", to:"Nashik", km: 250, img: "https://cdn.jsdelivr.net/gh/akashingne/images/Sula%E2%80%99s_estate_vineyards_in_Nashik.webp" },
-  ];
-  const wrap = document.getElementById('routes');
-  if(!wrap) return;
-  wrap.innerHTML = routes.map(r => {
-    const fare = Math.round(100 + r.km * 12 + 250);
-    return `
-      <div class="route">
-        <img alt="${r.from} to ${r.to}" src="${r.img}" loading="lazy">
-        <div class="body">
-          <h4>${r.from} → ${r.to}</h4>
-          <p class="meta">${r.km} km • Est. ₹${fare.toLocaleString('en-IN')}</p>
-          <button class="btn small" onclick="prefill('${r.from}','${r.to}',${r.km})">Book</button>
+  fetch("https://raw.githubusercontent.com/akashingne/Rutuja-Cab-Service/refs/heads/main/data/routes.json")
+  .then(response => response.json())
+  .then(data => {
+    const wrap = document.getElementById('routes');
+    if(!wrap) return;
+    wrap.innerHTML = data.map(r => {
+      const fare = Math.round(100 + r.km * 12 + 250);
+      return `
+        <div class="route">
+          <img alt="${r.from} to ${r.to}" src="${r.img}" loading="lazy">
+          <div class="body">
+            <h4>${r.from} → ${r.to}</h4>
+            <p class="meta">${r.km} km • Est. ₹${fare.toLocaleString('en-IN')}</p>
+            <button class="btn small" onclick="prefill('${r.from}','${r.to}',${r.km})">Book</button>
+          </div>
         </div>
-      </div>
-    `;
-  }).join('');
+      `;
+    }).join('');
+  })
+  .catch(error => console.error("Error fetching JSON:", error));
 }
 
 function buildDestinations(){
   const grid = document.getElementById('dest-grid');
   if(!grid) return;
-  grid.innerHTML = destinations.map((d, i) => `
-    <article class="dest" data-region="${d.region}" data-name="${d.name.toLowerCase()}">
-      <img src="${d.image}" alt="${d.name}" loading="lazy">
-      <div class="body">
-        <h4>${d.name}</h4>
-        <p class="meta">${d.region} • Typical from ${d.from} — ₹${d.approxFare.toLocaleString('en-IN')}</p>
-        <button class="btn small" onclick="prefill('${d.from}','${d.to}', 0)">Book</button>
-      </div>
-    </article>
-  `).join('');
+  fetch("https://raw.githubusercontent.com/akashingne/Rutuja-Cab-Service/refs/heads/main/data/destinations.json")
+      .then(response => response.json())
+      .then(data => {
+        grid.innerHTML = data.map((d, i) => `
+        <article class="dest" data-region="${d.region}" data-name="${d.name.toLowerCase()}">
+          <img src="${d.image}" alt="${d.name}" loading="lazy">
+          <div class="body">
+            <h4>${d.name}</h4>
+            <p class="meta">${d.region} • Typical from ${d.from} — ₹${d.approxFare.toLocaleString('en-IN')}</p>
+            <button class="btn small" onclick="prefill('${d.from}','${d.to}', 0)">Book</button>
+          </div>
+        </article>
+      `).join('');
+      })
+      .catch(error => console.error("Error fetching JSON:", error));
 }
 
 function filterDestinations(){
@@ -165,15 +85,24 @@ function prefillTest(){
 function calcAndShowFare(){
   const km = parseFloat(document.querySelector('[name=distance]').value || '0');
   const cab = document.querySelector('[name=cab]').value;
-  const pricing = { base: 100, perKm: { sedan: 12, suv: 15, premium: 20 }, driverAllowance: 250 };
-  const fare = Math.round(pricing.base + km * pricing.perKm[cab] + pricing.driverAllowance);
-  document.getElementById('fare-output').textContent = `Estimated fare: ₹${fare.toLocaleString('en-IN')}`;
+  fetch("https://raw.githubusercontent.com/akashingne/Rutuja-Cab-Service/refs/heads/main/data/pricing.json")
+      .then(response => response.json())
+      .then(pricing => {
+        const fare = Math.round(pricing.base + km * pricing.perKm[cab] + pricing.driverAllowance);
+        document.getElementById('fare-output').textContent = `Estimated fare: ₹${fare.toLocaleString('en-IN')}`;
+      })
+      .catch(error => console.error("Error fetching JSON:", error));
 }
 
 function initBooking(){
   const datalist = document.getElementById('cities');
   if(datalist){
-    datalist.innerHTML = cities.map(c => `<option value="${c}"></option>`).join('');
+    fetch("https://raw.githubusercontent.com/akashingne/Rutuja-Cab-Service/refs/heads/main/data/destinations.json")
+      .then(response => response.json())
+      .then(data => {
+        datalist.innerHTML = data.map(c => `<option value="${c}"></option>`).join('');
+      })
+      .catch(error => console.error("Error fetching JSON:", error));
   }
   const params = new URLSearchParams(location.search);
   const from = params.get('from');
