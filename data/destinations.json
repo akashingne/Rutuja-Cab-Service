@@ -78,5 +78,13 @@
     "approxFare": 7800,
     "from": "Nagpur",
     "to": "Tadoba"
+  },
+  {
+    "name": "Shegaon",
+    "region": "Vidarbha",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/shegaon.webp",
+    "approxFare": 7800,
+    "from": "Nagpur",
+    "to": "Tadoba"
   }
 ]
