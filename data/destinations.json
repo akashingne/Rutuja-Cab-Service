@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Mumbai (Gateway of India)",
+    "region": "Konkan",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Mumbai_03-2016_30_Gateway_of_India.webp",
+    "approxFare": 1800,
+    "from": "Pune",
+    "to": "Mumbai"
+  },
+  {
+    "name": "Pune (Shaniwar Wada)",
+    "region": "Western Ghats",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Shaniwar_wada_(pune).webp",
+    "approxFare": 1600,
+    "from": "Mumbai",
+    "to": "Pune"
+  },
+  {
+    "name": "Ajanta Caves (Aurangabad)",
+    "region": "Marathwada",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Cave_26,_Ajanta.webp",
+    "approxFare": 4800,
+    "from": "Aurangabad",
+    "to": "Ajanta Caves"
+  },
+  {
+    "name": "Mahabaleshwar",
+    "region": "Western Ghats",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Panoramic_view_from_Elphinstone_Point.webp",
+    "approxFare": 2800,
+    "from": "Pune",
+    "to": "Mahabaleshwar"
+  },
+  {
+    "name": "Lonavala (Bhushi Dam)",
+    "region": "Western Ghats",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Bhushi_dam.webp",
+    "approxFare": 2200,
+    "from": "Mumbai",
+    "to": "Lonavala"
+  },
+  {
+    "name": "Shirdi",
+    "region": "Khandesh",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Shirdi_Sai_Baba_Samadhi.webp",
+    "approxFare": 3800,
+    "from": "Pune",
+    "to": "Shirdi"
+  },
+  {
+    "name": "Alibaug",
+    "region": "Konkan",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Alibag1.webp",
+    "approxFare": 1900,
+    "from": "Mumbai",
+    "to": "Alibaug"
+  },
+  {
+    "name": "Nashik (Sula Vineyards)",
+    "region": "Khandesh",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Sula%E2%80%99s_estate_vineyards_in_Nashik.webp",
+    "approxFare": 3200,
+    "from": "Mumbai",
+    "to": "Nashik"
+  },
+  {
+    "name": "Aurangabad (Bibi Ka Maqbara)",
+    "region": "Marathwada",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Aurangabad_Bibi_ka_Maqbara.webp",
+    "approxFare": 4200,
+    "from": "Pune",
+    "to": "Aurangabad"
+  },
+  {
+    "name": "Tadoba Andhari Tiger Reserve",
+    "region": "Vidarbha",
+    "image": "https://cdn.jsdelivr.net/gh/akashingne/images/Panthera_tigris_tigris_Tidoba_20150306.webp",
+    "approxFare": 7800,
+    "from": "Nagpur",
+    "to": "Tadoba"
+  }
+]
