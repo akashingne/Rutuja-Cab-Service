@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Rutuja Cab Service</title>
+  <meta name="description"
+    content="We are a Maharashtra-focused cab company committed to safety, punctuality, and transparent pricing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/favicon.png" />
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Rutuja Cab Service", "description": "Reliable intercity and local cab service across Maharashtra.", "areaServed": "Maharashtra, India", "telephone": "+91-98765-43210", "url": "https://example.com", "address": {"@type": "PostalAddress", "addressRegion": "Maharashtra", "addressCountry": "IN"}, "openingHours": "Mo-Su 00:00-23:59", "priceRange": "₹₹"}
+  </script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container row between center">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/logo.svg" alt="Rutuja Cab Service logo">
+        <span>Rutuja Cab Service</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="booking.html" class="btn small">Book Now</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero"
+    style="background-image:url('https://cdn.jsdelivr.net/gh/akashingne/images/Bhushi_dam.webp')">
+    <div class="container">
+      <h1>About Us</h1>
+      <p>Local roots, statewide reach.</p>
+    </div>
+  </section>
+  <section class="container grid two">
+    <div>
+      <h2>Who We Are</h2>
+      <p>Rutuja Cab Service is built by locals who know Maharashtra inside out. Whether you’re heading to the beaches,
+        the ghats, or the heart of the state, we ensure a safe, comfortable, and on-time ride — every time.</p>
+      <h3>Why Choose Us</h3>
+      <ul>
+        <li>Upfront pricing — no surprises</li>
+        <li>Trained, verified drivers</li>
+        <li>Clean, well-maintained cars</li>
+        <li>24×7 assistance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Service Coverage</h3>
+      <p>Mumbai • Pune • Nagpur • Nashik • Aurangabad • Kolhapur • Satara • Ratnagiri • and more.</p>
+      <p><strong>Airport desks:</strong> PNQ (Pune).</p>
+      <!-- <p><strong>Airport desks:</strong> BOM (Mumbai), PNQ (Pune), NAG (Nagpur).</p> -->
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container grid three">
+      <div>
+        <h4>About</h4>
+        <p><strong>Your Trusted Cab Service Across Maharashtra.</strong><br>
+          Airport transfers, outstation trips, and city rides — safe, punctual, and reliable.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="list-unstyled">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="destinations.html">Popular Routes</a></li>
+          <li><a href="booking.html">Book a Cab</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <p><strong>Serving You With Comfort & Care.</strong><br>
+          Our goal is to make every journey smooth and stress-free.</p>
+        <p style="margin-top:10px;">
+          📞 <a href="tel:+919876543210" style="color:#9aa6b0;text-decoration:none;">+91 87882-27400</a><br>
+          ✉️ <a href="mailto:contact@rutujacabservice.com"
+            style="color:#9aa6b0;text-decoration:none;">contact@rutujacabservice.com</a>
+        </p>
+        <p class="muted">© <span id="year"></span> Rutuja Cab Service.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- WhatsApp floating button -->
+  <a id="whatsapp-button" class="whatsapp-float" data-phone="917769963488" data-message="Hello! I want to book a taxi.">
+    <span class="sr-only">Chat with us on WhatsApp</span>
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+      <path fill="currentColor"
+        d="M20.52 3.48A11.89 11.89 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.12.56 4.08 1.53 5.83L0 24l6.43-1.64A11.91 11.91 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52zM12 21.5c-.98 0-1.95-.16-2.85-.48L6 20l.86-2.6A9.45 9.45 0 0 1 4.5 12C4.5 7.31 7.31 4.5 12 4.5S19.5 7.31 19.5 12 16.69 19.5 12 19.5z" />
+      <path fill="#fff"
+        d="M17.02 14.2c-.3-.15-1.78-.88-2.05-.98-.27-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.46-1.72-1.63-2-.17-.28-.02-.43.12-.58.12-.12.27-.32.41-.48.14-.16.19-.27.29-.46.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.19 0-.5.07-.77.37-.27.29-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49 3 .3 3.25-1.96 3.41-2.09.16-.13.26-.3.18-.48-.08-.18-.27-.3-.57-.45z" />
+    </svg>
+  </a>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
